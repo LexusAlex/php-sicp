@@ -1,0 +1,32 @@
+{
+    "name": "lexusalex/php-sicp",
+    "type": "project",
+    "authors": [
+        {
+            "name": "alex",
+            "email": "alexsey_89@bk.ru"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "process-timeout": 1800
+    },
+
+    "require": {
+        "php": ">=7.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "@stable",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "LexusAlex\\PhpSicp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LexusAlexTest\\PhpSicp\\": "tests/"
+        }
+    }
+}
