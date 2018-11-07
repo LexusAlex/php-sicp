@@ -30,7 +30,8 @@ class ElementsOfProgramming
     }
 
     /**
-     * Сумма квадратов двух больших чисел
+     * Сумма квадратов двух больших чисел из трех
+     * Первое решение что просто пришло на ум
      * @param int $x
      * @param int $y
      * @param int $z
@@ -44,6 +45,20 @@ class ElementsOfProgramming
 
         return ($result[0] + $result[1]);
 
+
+    }
+
+    /**
+     * Сумма квадратов двух больших чисел из трех
+     * Второй вариант решения, более элегантен чем первый и гораздо меньше кода
+     * @param int $x
+     * @param int $y
+     * @param int $z
+     * @return int
+     */
+    public function sumOfSquaresOfTopTwo2(int $x, int $y, int $z) {
+
+        return $this->sumOfSquares( max($x, $y), max(  min($x, $y) ,$z));
 
     }
 }

@@ -28,10 +28,30 @@ class ElementsOfProgrammingTest extends TestCase
         $this->assertEquals($this->object->sumOfSquares(3, 4), 25);
     }
 
-    public function testSumOfSquaresOfTopTwo()
+    public function SumOfSquaresOfTopTwoProvider()
     {
-        $this->assertEquals($this->object->sumOfSquaresOfTopTwo(5, 6, 7), 85);
-        $this->assertEquals($this->object->sumOfSquaresOfTopTwo(1, 1, 1), 2);
-        $this->assertEquals($this->object->sumOfSquaresOfTopTwo(10, 10, 20), 500);
+        return [
+            'five six seven'  => [5, 6, 7, 85],
+            'one one one' => [1, 1, 1, 2],
+            'seven seven seven' => [7, 7, 7, 98],
+            'three seven one' => [3, 7, 1, 58],
+        ];
+
+    }
+
+    /**
+     * @dataProvider SumOfSquaresOfTopTwoProvider
+     */
+    public function testSumOfSquaresOfTopTwo($x, $y, $z, $expected)
+    {
+        $this->assertEquals($this->object->sumOfSquaresOfTopTwo($x, $y, $z), $expected);
+    }
+
+    /**
+     * @dataProvider SumOfSquaresOfTopTwoProvider
+     */
+    public function testSumOfSquaresOfTopTwo2($x, $y, $z, $expected)
+    {
+        $this->assertEquals($this->object->sumOfSquaresOfTopTwo2($x, $y, $z), $expected);
     }
 }
