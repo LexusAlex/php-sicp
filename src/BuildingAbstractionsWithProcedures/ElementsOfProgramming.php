@@ -4,6 +4,7 @@ namespace LexusAlex\PhpSicp\BuildingAbstractionsWithProcedures;
 
 /**
  * Class ElementsOfProgramming
+ *
  * @package LexusAlex\PhpSicp\BuildingAbstractionsWithProcedures
  */
 class ElementsOfProgramming
@@ -11,7 +12,8 @@ class ElementsOfProgramming
     /**
      * Квадрат числа
      * `square(5) // 25`
-     * @param int $x
+     *
+     * @param  int $x
      * @return int
      */
     public function square(int $x)
@@ -22,8 +24,9 @@ class ElementsOfProgramming
     /**
      * Сумма квадратов
      * `sumOfSquares(3, 4) // 25`
-     * @param int $x
-     * @param int $y
+     *
+     * @param  int $x
+     * @param  int $y
      * @return int
      */
     public function sumOfSquares(int $x, int $y) : int
@@ -35,9 +38,10 @@ class ElementsOfProgramming
      * Сумма квадратов двух больших чисел из трех
      * Первое решение что просто пришло на ум
      * `sumOfSquaresOfTopTwo(5, 6, 7) // 85`
-     * @param int $x
-     * @param int $y
-     * @param int $z
+     *
+     * @param  int $x
+     * @param  int $y
+     * @param  int $z
      * @return mixed
      */
     public function sumOfSquaresOfTopTwo(int $x, int $y, int $z)
@@ -53,24 +57,26 @@ class ElementsOfProgramming
      * Сумма квадратов двух больших чисел из трех
      * Второй вариант решения, более элегантен чем первый и гораздо меньше кода
      * `sumOfSquaresOfTopTwo(5, 6, 7) // 85`
-     * @param int $x
-     * @param int $y
-     * @param int $z
+     *
+     * @param  int $x
+     * @param  int $y
+     * @param  int $z
      * @return int
      */
     public function sumOfSquaresOfTopTwo2(int $x, int $y, int $z)
     {
-        return $this->sumOfSquares(max($x, $y), max(min($x, $y) ,$z));
+        return $this->sumOfSquares(max($x, $y), max(min($x, $y), $z));
     }
 
     /**
      * Среднее значение между двумя числами
      * `average(4, 17)` // 10.5
-     * @param $x
-     * @param $y
+     *
+     * @param  $x
+     * @param  $y
      * @return float|int
      */
-    public function average ($x, $y)
+    public function average($x, $y)
     {
         return ($x + $y) / 2;
     }
@@ -81,8 +87,9 @@ class ElementsOfProgramming
      * `improve(1, 9) // 5`
      * `improve(5, 9) // 3.4`
      * `improve(3.4, 9) // 3.0235294117647`
-     * @param $guess
-     * @param $x
+     *
+     * @param  $guess
+     * @param  $x
      * @return float|int
      */
     public function improve($guess, $x)
@@ -95,9 +102,10 @@ class ElementsOfProgramming
      * `isGoodEnough(1 * 1 , 9)) // 8 - improve = 5`
      * `isGoodEnough(5 * 5 , 9)) // 16 - improve = 3.4`
      * `isGoodEnough(3.4 * 3.4 , 9)) // 2.56 - improve = 3.0235294117647`
-     * @param $guess
-     * @param $x
-     * @param float $tolerance
+     *
+     * @param  $guess
+     * @param  $x
+     * @param  float $tolerance
      * @return bool
      */
     public function isGoodEnough($guess, $x, $tolerance = 0.001)
@@ -107,8 +115,9 @@ class ElementsOfProgramming
 
     /**
      * Рекурсивная функция поиска квадратоного корня меодом приближений
-     * @param $guess
-     * @param $x
+     *
+     * @param  $guess
+     * @param  $x
      * @return mixed
      */
     public function sqrtIter($guess, $x)
@@ -122,8 +131,9 @@ class ElementsOfProgramming
 
     /**
      * Поиск квадратного корня числа
-     * @param $x
-     * @param float $guess
+     *
+     * @param  $x
+     * @param  float $guess
      * @return mixed
      */
     public function sqrt($x, $guess = 1.0)
@@ -134,9 +144,10 @@ class ElementsOfProgramming
 
     /**
      * Функция предикат, определяем достаточное приближение для числа на каждом шаге рекурсии с улучшенной точностью
-     * @param $guess
-     * @param $prevGuess
-     * @param float $tolerance
+     *
+     * @param  $guess
+     * @param  $prevGuess
+     * @param  float     $tolerance
      * @return bool
      */
     public function isBetterGoodEnough($guess, $prevGuess, $tolerance = 0.001)
@@ -146,9 +157,10 @@ class ElementsOfProgramming
 
     /**
      * Рекурсивная функция поиска квадратоного корня меодом приближений
-     * @param $guess
-     * @param $prevGuess
-     * @param $x
+     *
+     * @param  $guess
+     * @param  $prevGuess
+     * @param  $x
      * @return mixed
      */
     public function betterSqrtIter($guess, $prevGuess, $x)
@@ -162,9 +174,10 @@ class ElementsOfProgramming
 
     /**
      * Поиск квадратного корня числа
-     * @param $x
-     * @param float $guess
-     * @param float $prevGuess
+     *
+     * @param  $x
+     * @param  float $guess
+     * @param  float $prevGuess
      * @return mixed
      */
     public function betterSqrt($x, $guess = 1.0, $prevGuess = 0.5)
