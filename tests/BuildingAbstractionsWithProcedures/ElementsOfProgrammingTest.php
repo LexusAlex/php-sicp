@@ -61,6 +61,9 @@ class ElementsOfProgrammingTest extends TestCase
         $this->assertEquals($this->object->average(7.5, 16.9), 12.2, 'Среднее значение не верно');
     }
 
+    /**
+     * @test
+     */
     public function testImprove()
     {
         $this->assertEquals($this->object->improve(1, 2), 1.5);
@@ -103,5 +106,10 @@ class ElementsOfProgrammingTest extends TestCase
     {
         $this->assertSame($this->object->sqrt($x), $expected);
 
+    }
+
+    public function testIsBetterGoodEnough()
+    {
+       $this->assertEquals($this->object->betterSqrt(0.01), 0.1000000000014);
     }
 }

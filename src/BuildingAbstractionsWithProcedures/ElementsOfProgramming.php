@@ -40,15 +40,13 @@ class ElementsOfProgramming
      * @param int $z
      * @return mixed
      */
-    public function sumOfSquaresOfTopTwo(int $x, int $y, int $z) {
-
+    public function sumOfSquaresOfTopTwo(int $x, int $y, int $z)
+    {
         $result = [$this->square($x), $this->square($y), $this->square($z)];
 
         rsort($result);
 
         return ($result[0] + $result[1]);
-
-
     }
 
     /**
@@ -60,10 +58,9 @@ class ElementsOfProgramming
      * @param int $z
      * @return int
      */
-    public function sumOfSquaresOfTopTwo2(int $x, int $y, int $z) {
-
-        return $this->sumOfSquares( max($x, $y), max(  min($x, $y) ,$z));
-
+    public function sumOfSquaresOfTopTwo2(int $x, int $y, int $z)
+    {
+        return $this->sumOfSquares(max($x, $y), max(min($x, $y) ,$z));
     }
 
     /**
@@ -73,8 +70,8 @@ class ElementsOfProgramming
      * @param $y
      * @return float|int
      */
-    public function average ($x, $y) {
-
+    public function average ($x, $y)
+    {
         return ($x + $y) / 2;
     }
 
@@ -109,7 +106,7 @@ class ElementsOfProgramming
     }
 
     /**
-     * Рекурсивная функция поиска квадратоного корня
+     * Рекурсивная функция поиска квадратоного корня меодом приближений
      * @param $guess
      * @param $x
      * @return mixed
@@ -118,18 +115,61 @@ class ElementsOfProgramming
     {
         if ($this->isGoodEnough($guess * $guess, $x)) {
             return $guess;
-        } else{
+        } else {
             return $this->sqrtIter($this->improve($guess, $x), $x);
         }
     }
 
     /**
+     * Поиск квадратного корня числа
      * @param $x
      * @param float $guess
      * @return mixed
      */
-    public function sqrt($x, $guess = 1.0){
+    public function sqrt($x, $guess = 1.0)
+    {
 
         return $this->sqrtIter($guess, $x);
     }
+
+    /**
+     * Функция предикат, определяем достаточное приближение для числа на каждом шаге рекурсии с улучшенной точностью
+     * @param $guess
+     * @param $prevGuess
+     * @param float $tolerance
+     * @return bool
+     */
+    public function isBetterGoodEnough($guess, $prevGuess, $tolerance = 0.001)
+    {
+        return (abs(($guess - $prevGuess) / $prevGuess) < $tolerance);
+    }
+
+    /**
+     * Рекурсивная функция поиска квадратоного корня меодом приближений
+     * @param $guess
+     * @param $prevGuess
+     * @param $x
+     * @return mixed
+     */
+    public function betterSqrtIter($guess, $prevGuess, $x)
+    {
+        if ($this->isBetterGoodEnough($guess, $prevGuess)) {
+            return $guess;
+        } else{
+            return $this->betterSqrtIter($this->improve($guess, $x), $guess, $x);
+        }
+    }
+
+    /**
+     * Поиск квадратного корня числа
+     * @param $x
+     * @param float $guess
+     * @param float $prevGuess
+     * @return mixed
+     */
+    public function betterSqrt($x, $guess = 1.0, $prevGuess = 0.5)
+    {
+        return $this->betterSqrtIter($guess, $prevGuess, $x);
+    }
+
 }
