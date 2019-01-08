@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  server:
+    container_name: server
+    build: ./services/apache-php7.3
+    volumes:
+    - $PWD:/var/www/localhost/htdocs
+    - $PWD/services/apache-php7.3/etc/php/7.3/php.ini:/etc/php/7.3/php.ini
+    ports:
+    - "127.0.0.1:80:80"

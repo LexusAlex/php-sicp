@@ -2,5 +2,3 @@
 /vendor/
 *.swo
 *.swp
-
-composer.lock

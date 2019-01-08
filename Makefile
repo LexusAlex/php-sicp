@@ -1,21 +1,23 @@
 init:
-	docker build --tag lexusalex/php-sicp .
-	docker run --name php-sicp -p 80:80 -d -v $(PWD):/var/www/localhost/htdocs lexusalex/php-sicp
-
+	docker-compose build
+	docker-compose up -d
 start:
-	docker start php-sicp
+	docker-compose up -d
 
 stop:
-	docker stop php-sicp
+	docker-compose stop
 
 restart:
-	docker restart php-sicp
-
-composer:
-	docker exec -i php-sicp /bin/bash -c "composer update"
-
-linter:
-	docker exec -i php-sicp /bin/bash -c "vendor/bin/phpcs -- --standard=PSR12 src"
+	docker-compose restart
 
 phpunit:
-	docker exec -it php-sicp /bin/bash -c "vendor/bin/phpunit"
+	docker exec -it server /bin/bash -c "vendor/bin/phpunit"
+
+composer:
+	docker exec -i server /bin/bash -c "composer update && chmod -R 777 vendor composer.lock"
+
+linter:
+	docker exec -i server /bin/bash -c "vendor/bin/phpcs -- --standard=PSR12 public"
+
+linter-fix:
+	docker exec -i server /bin/bash -c "vendor/bin/phpcbf -- --standard=PSR12 src"
