@@ -185,4 +185,59 @@ class ElementsOfProgramming
         return $this->betterSqrtIter($guess, $prevGuess, $x);
     }
 
+    // n = n (n - 1)
+    // 5 * (5 - 1) * (4 - 1) * (3 - 1) (2 - 1)
+
+    /**
+     * Линейно-рекурсивный процесс
+     * Как выгляди рекурсия
+     * 6 * factorial(6 - 1)
+     * 6 * 5 * factorial(5 - 1)
+     * 6 * 5 * 4 * factorial(4 - 1)
+     * 6 * 5 * 4 * 3 * factorial(3 - 1)
+     * 6 * 5 * 4 * 3 * 2 * factorial(2 - 1)
+     * 6 * 5 * 4 * 3 * 2 * 1
+     * 6 * 5 * 4 * 3 * 2
+     * 6 * 5 * 4 * 6
+     * 6 * 5 * 24
+     * 6 * 120
+     * 720
+     * @param $n
+     * @return float|int
+     */
+    public function factorial($n)
+    {
+        return ($n == 1 || $n == 0) ? 1 : ($n * $this->factorial($n - 1));
+    }
+
+    public function factorial2($n)
+    {
+
+        if ($n == 1 || $n == 0) {
+            return 1;
+        } else {
+            return ($n * $this->factorial($n - 1));
+        }
+    }
+
+    /**
+     * Вычисление факториала с помощью цикла
+     * i = 1; factorial = 1;
+     * i = 2; factorial = 1 * 2 // 2;
+     * i = 3; factorial = 2 * 3 // 6;
+     * i = 4; factorial = 6 * 4 // 24;
+     * i = 5; factorial = 24 * 5 // 120;
+     * i = 6; factorial = 120 * 6 // 720;
+     * @param $n
+     * @return float|int
+     */
+    public function factorial3($n)
+    {
+        $factorial = 1;
+        for ($i = 1; $i <= $n; $i++){
+            $factorial = $factorial * $i;
+        }
+        return $factorial;
+    }
+
 }

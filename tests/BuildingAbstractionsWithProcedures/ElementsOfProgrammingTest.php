@@ -112,4 +112,13 @@ class ElementsOfProgrammingTest extends TestCase
     {
        $this->assertEquals($this->object->betterSqrt(0.01), 0.1000000000014);
     }
+
+    //------------------------
+
+    public function testFactorial()
+    {
+        $this->assertEquals($this->object->factorial(6), 720);
+        $this->assertEquals($this->object->factorial2(6), 720);
+        $this->assertEquals($this->object->factorial3(6), 720);
+    }
 }
