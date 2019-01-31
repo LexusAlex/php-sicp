@@ -120,5 +120,7 @@ class ElementsOfProgrammingTest extends TestCase
         $this->assertEquals($this->object->factorial(6), 720);
         $this->assertEquals($this->object->factorial2(6), 720);
         $this->assertEquals($this->object->factorial3(6), 720);
+        $this->assertEquals($this->object->factorial4(6), 720);
+        $this->assertEquals($this->object->factorial5(6), 720);
     }
 }

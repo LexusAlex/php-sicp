@@ -210,6 +210,10 @@ class ElementsOfProgramming
         return ($n == 1 || $n == 0) ? 1 : ($n * $this->factorial($n - 1));
     }
 
+    /**
+     * @param $n
+     * @return float|int
+     */
     public function factorial2($n)
     {
 
@@ -240,4 +244,31 @@ class ElementsOfProgramming
         return $factorial;
     }
 
+    /**
+     * @param $n
+     * @return int
+     */
+    public function factorial4($n)
+    {
+        $f = 1;
+        $i = 1;
+        while ($i <= $n){
+            $f *=  $i;
+            $i++;
+        }
+        return $f;
+    }
+
+
+    public function factorial5($n) {
+
+        $factIter = function ($product, $conter, $max) use ($n, &$factIter) {
+            if ($conter > $max) { // завершение процесса
+                return $product;
+            } else {
+                return $factIter($product * $conter, $conter + 1, $max);
+            }
+        };
+        return $factIter(1, 1, $n);
+    }
 }
